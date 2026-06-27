@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full screen goat background */
+html, body {
+  width: 100%;
+  height: 100%;
+
+  background-image: url('goat.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-family: Arial, sans-serif;
+}
+
+/* Main layout (split screen feel) */
+.app {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ push everything to the RIGHT side */
+  align-items: flex-end;
+  justify-content: center;
+
+  padding-right: 40px;
+
+  text-align: right;
+}
+
+/* Container for your text */
+.app > * {
+  max-width: 250px;
+}
+
+/* White text so it shows on dark image */
+
+h1, p {
+  color: white;
+
+  text-shadow:
+    0 0 5px #8a2be2,
+    0 0 10px #8a2be2,
+    0 0 20px #8a2be2;
+}
+
+
+/* Title bigger */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+/* spacing between lines */
+p {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+/* Button styling */
+button {
+  margin-top: 10px;
+
+  padding: 12px 20px;
+  font-size: 1.1em;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #4CAF50;
+  color: white;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.app > * {
+  margin-bottom: 8px;
+}
+
+
+#pet-btn {
+  align-self: flex-end;
+}
