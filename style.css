@@ -8,13 +8,12 @@
 html, body {
   width: 100%;
   height: 100%;
+  margin: 0;
 
-  background-image: url('goat.gif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: black; /* ✅ force black background */
 
   font-family: Arial, sans-serif;
+  overflow: hidden; /* ✅ prevent scrollbars */
 }
 
 /* Main layout (split screen feel) */
@@ -84,11 +83,35 @@ button:hover {
 }
 
 
-.app > * {
-  margin-bottom: 8px;
+.app {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  padding-right: 40px;
+
+  text-align: right;
 }
 
 
 #pet-btn {
   align-self: flex-end;
+}
+#goat {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  height: 100%;     /* ✅ fills window height */
+  width: auto;      /* ✅ keeps proportions */
+
+  max-width: 60%;   /* ✅ prevents it from covering the UI */
+
+  object-fit: contain;
 }

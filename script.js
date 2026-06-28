@@ -6,9 +6,19 @@ const message = document.getElementById("message");
 const button = document.getElementById("pet-btn");
 const goat = document.getElementById("goat");
 
+let currentState = "";
+
+function setGoat(state, file) {
+  if (currentState !== state) {
+    goat.src = file;
+    currentState = state;
+  }
+}
+
 function updateUI() {
   percentage.textContent = petLevel + "%";
 
+  // ✅ Mood text
   if (petLevel > 70) {
     mood.textContent = "Happy";
     message.textContent = "Living its best goat life";
@@ -19,12 +29,25 @@ function updateUI() {
     mood.textContent = "Lonely";
     message.textContent = "Please pet the goat 🥺";
   } else {
-    mood.textContent = "Chaos Goat";
-    message.textContent = "The goat has lost control";
+    mood.textContent = "Still Goat";
+    message.textContent = "The goat has given up...";
+  }
+
+  // ✅ GIF SPEED CONTROL
+  if (petLevel > 75) {
+    setGoat("fast", "goat-fast.gif");
+  } else if (petLevel > 50) {
+    setGoat("medium", "goat-medium.gif");
+  } else if (petLevel > 25) {
+    setGoat("slow", "goat-slow.gif");
+  } else if (petLevel > 0) {
+    setGoat("super-slow", "goat-super-slow.gif");
+  } else {
+    setGoat("still", "goat-super-still.gif");
   }
 }
 
-// drain over time
+// ✅ Drain over time (OUTSIDE function)
 setInterval(() => {
   if (petLevel > 0) {
     petLevel -= 1;
@@ -32,10 +55,11 @@ setInterval(() => {
   }
 }, 1000);
 
-// button
+// ✅ Button (OUTSIDE function)
 button.addEventListener("click", () => {
   petLevel = Math.min(100, petLevel + 20);
   updateUI();
 });
 
+// ✅ Initial load (OUTSIDE function)
 updateUI();
